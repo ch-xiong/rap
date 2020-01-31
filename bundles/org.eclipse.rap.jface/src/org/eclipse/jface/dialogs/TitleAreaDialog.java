@@ -283,7 +283,7 @@ public class TitleAreaDialog extends TrayDialog {
 		bottomFillerLabel = new Label(parent, SWT.CENTER);
 		bottomFillerLabel.setBackground(background);
 		setLayoutsForNormalMessage(verticalSpacing, horizontalSpacing);
-		determineTitleImageLargest();
+//		determineTitleImageLargest();
 		if (titleImageLargest)
 			return titleImageLabel;
 		return messageLabel;

@@ -1764,4 +1764,7 @@ public class GC extends Resource {
     throw new NotSerializableException( getClass().getName() );
   }
 
+  public void setLineStyle( int lineStyle ) {
+    return;
+  }
 }

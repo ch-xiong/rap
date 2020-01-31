@@ -13,17 +13,17 @@ namespace( "rwt.client" );
 
 rwt.client.ClientMessages = function() {
   this._messages = {
-    "ServerError" : "Server Error",
-    "ServerErrorDescription" : "The application terminated unexpectedly.",
-    "ConnectionError" : "Network Error",
-    "ConnectionErrorDescription" : "The server seems to be temporarily unavailable.",
-    "SessionTimeout" : "Session Timeout",
-    "SessionTimeoutDescription" : "The server session timed out.",
-    "ClientError" : "Client Error",
-    "ClientErrorDescription" : "The application terminated unexpectedly.",
-    "Retry" : "Retry",
-    "Restart" : "Restart",
-    "Details" : "Details"
+    "ServerError" : "服务端错误",
+    "ServerErrorDescription" : "服务请求失败，请重试。",
+    "ConnectionError" : "网络错误",
+    "ConnectionErrorDescription" : "服务请求失败，请重试。",
+    "SessionTimeout" : "会话过期",
+    "SessionTimeoutDescription" : "用户长时间未操作，会话已过期。",
+    "ClientError" : "客户端请求错误",
+    "ClientErrorDescription" : "用户长时间未操作，会话已过期。",
+    "Retry" : "重试",
+    "Restart" : "重新登录",
+    "Details" : "查看明细"
   };
 };
 

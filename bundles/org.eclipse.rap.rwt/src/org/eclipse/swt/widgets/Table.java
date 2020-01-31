@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2002, 2019 Innoopract Informationssysteme GmbH and others.
+ * Copyright (c) 2002, 2018 Innoopract Informationssysteme GmbH and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -12,10 +12,8 @@
 package org.eclipse.swt.widgets;
 
 import static org.eclipse.rap.rwt.internal.textsize.TextSizeUtil.stringExtent;
-import static org.eclipse.swt.internal.widgets.MarkupUtil.checkMarkupPrecondition;
 import static org.eclipse.swt.internal.widgets.MarkupUtil.isMarkupEnabledFor;
 import static org.eclipse.swt.internal.widgets.MarkupUtil.isToolTipMarkupEnabledFor;
-import static org.eclipse.swt.internal.widgets.MarkupUtil.MarkupTarget.TEXT;
 import static org.eclipse.swt.internal.widgets.MarkupValidator.isValidationDisabledFor;
 
 import org.eclipse.rap.rwt.RWT;
@@ -403,7 +401,6 @@ public class Table extends Composite {
       setPreloadedItems( value );
     }
     if( !RWT.MARKUP_ENABLED.equals( key ) || !isMarkupEnabledFor( this ) ) {
-      checkMarkupPrecondition( key, TEXT, () -> itemCount == 0 );
       super.setData( key, value );
     }
   }

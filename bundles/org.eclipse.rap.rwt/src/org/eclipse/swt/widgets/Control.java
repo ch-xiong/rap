@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2002, 2019 Innoopract Informationssysteme GmbH and others.
+ * Copyright (c) 2002, 2017 Innoopract Informationssysteme GmbH and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -11,9 +11,7 @@
  ******************************************************************************/
 package org.eclipse.swt.widgets;
 
-import static org.eclipse.swt.internal.widgets.MarkupUtil.checkMarkupPrecondition;
 import static org.eclipse.swt.internal.widgets.MarkupUtil.isToolTipMarkupEnabledFor;
-import static org.eclipse.swt.internal.widgets.MarkupUtil.MarkupTarget.TOOLTIP;
 import static org.eclipse.swt.internal.widgets.MarkupValidator.isValidationDisabledFor;
 
 import org.eclipse.rap.rwt.RWT;
@@ -36,6 +34,8 @@ import org.eclipse.swt.events.HelpListener;
 import org.eclipse.swt.events.KeyListener;
 import org.eclipse.swt.events.MenuDetectListener;
 import org.eclipse.swt.events.MouseListener;
+import org.eclipse.swt.events.MouseMoveListener;
+import org.eclipse.swt.events.MouseTrackListener;
 import org.eclipse.swt.events.PaintListener;
 import org.eclipse.swt.events.TouchListener;
 import org.eclipse.swt.events.TraverseListener;
@@ -1683,6 +1683,13 @@ public abstract class Control extends Widget implements Drawable {
   }
 
   /**
+   * Empty stub for the sake of single sourcing
+   * @param listener
+   */
+  public void addMouseTrackListener ( MouseTrackListener listener ) {
+  }
+
+  /**
    * Removes the listener from the collection of listeners who will
    * be notified when mouse buttons are pressed and released.
    *
@@ -2524,7 +2531,6 @@ public abstract class Control extends Widget implements Drawable {
     if( RWT.CUSTOM_VARIANT.equals( key ) ) {
       bufferedPadding = null;
     }
-    checkMarkupPrecondition( key, TOOLTIP, () -> toolTipText == null );
     super.setData( key, value );
   }
 
@@ -2761,4 +2767,8 @@ public abstract class Control extends Widget implements Drawable {
     return ( ControlRemoteAdapter )getAdapter( RemoteAdapter.class );
   }
 
+  public void addPaintListener( PaintListener listener ) {  }
+  public void removePaintListener( PaintListener listener ) {  }
+  public void addMouseMoveListener( MouseMoveListener listener ) {  }
+  public void removeMouseMoveListener( MouseMoveListener listener ) {  }
 }

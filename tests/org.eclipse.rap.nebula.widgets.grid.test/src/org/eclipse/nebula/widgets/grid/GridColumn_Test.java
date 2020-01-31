@@ -32,7 +32,6 @@ import org.eclipse.rap.rwt.internal.service.ServiceStore;
 import org.eclipse.rap.rwt.testfixture.TestContext;
 import org.eclipse.rap.rwt.testfixture.internal.Fixture;
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.SWTException;
 import org.eclipse.swt.events.ControlAdapter;
 import org.eclipse.swt.events.ControlListener;
 import org.eclipse.swt.events.DisposeEvent;
@@ -847,26 +846,6 @@ public class GridColumn_Test {
     } catch( IllegalArgumentException notExpected ) {
       fail();
     }
-  }
-
-  @Test
-  public void testSetToolTipMarkupEnabled_onDirtyWidget() {
-    column.setHeaderTooltip( "something" );
-
-    try {
-      column.setData( RWT.TOOLTIP_MARKUP_ENABLED, Boolean.TRUE );
-      fail();
-    } catch( SWTException expected ) {
-      assertTrue( expected.throwable instanceof IllegalStateException );
-    }
-  }
-
-  @Test
-  public void testSetToolTipMarkupEnabled_onDirtyWidget_onceEnabledBefore() {
-    column.setData( RWT.TOOLTIP_MARKUP_ENABLED, Boolean.TRUE );
-    column.setHeaderTooltip( "something" );
-
-    column.setData( RWT.TOOLTIP_MARKUP_ENABLED, Boolean.TRUE );
   }
 
   @Test

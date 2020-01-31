@@ -52,7 +52,7 @@ rwt.qx.Class.define( "rwt.widgets.GC", {
   members : {
 
     init : function( x, y, width, height, font, background, foreground  ) {
-      this._initClipping( x, y, width, height );
+      //this._initClipping( x, y, width, height );
       this._initFields( font, background, foreground );
       this._control.dispatchSimpleEvent( "paint" ); // client-side painting on server-side redraw
     },

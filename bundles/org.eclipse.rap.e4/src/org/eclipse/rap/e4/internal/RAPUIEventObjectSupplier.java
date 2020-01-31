@@ -12,71 +12,60 @@ import org.eclipse.e4.ui.di.UIEventTopic;
 import org.eclipse.e4.ui.di.UISynchronize;
 import org.osgi.service.event.EventHandler;
 
+@SuppressWarnings("restriction")
 public class RAPUIEventObjectSupplier extends RAPEventObjectSupplier {
 
-  class UIEventHandler implements EventHandler {
+	class UIEventHandler implements EventHandler {
 
-    final protected IRequestor requestor;
-    final private String topic;
+		final protected IRequestor requestor;
+		final private String topic;
 
-    public UIEventHandler(String topic, IRequestor requestor) {
-      this.topic = topic;
-      this.requestor = requestor;
-    }
+		public UIEventHandler(String topic, IRequestor requestor) {
+			this.topic = topic;
+			this.requestor = requestor;
+		}
 
-    @Override
-    public void handleEvent(org.osgi.service.event.Event event) {
-      if (!requestor.isValid()) {
-        unsubscribe(requestor);
-        return;
-      }
+		public void handleEvent(org.osgi.service.event.Event event) {
+			addCurrentEvent(topic, event);
+			requestor.resolveArguments(false);
+			removeCurrentEvent(topic);
+			if( uiSync == null ) {
+				if (logger != null)
+					logger.log(Level.WARNING, "No realm found to process UI event " + event);
+				return;
+			} else {
+				if(RAPEventBroker.isAsyncEvent(event)) {
+					uiSync.asyncExec(new Runnable() {
+						public void run() {
+							requestor.execute();
+						}
+					});
+				} else {
+					uiSync.syncExec(new Runnable() {
+						public void run() {
+							requestor.execute();
+						}
+					});
+				}
+			}
+		}
+	}
 
-      addCurrentEvent(topic, event);
-      requestor.resolveArguments(false);
-      removeCurrentEvent(topic);
-      if( uiSync == null ) {
-        if (logger != null) {
-          logger.log(Level.WARNING, "No realm found to process UI event " + event);
-        }
-        return;
-      } else {
-        if(RAPEventBroker.isAsyncEvent(event)) {
-          uiSync.asyncExec(new Runnable() {
-            @Override
-            public void run() {
-              requestor.execute();
-            }
-          });
-        } else {
-          uiSync.syncExec(new Runnable() {
-            @Override
-            public void run() {
-              requestor.execute();
-            }
-          });
-        }
-      }
-    }
-  }
+	@Inject
+	protected UISynchronize uiSync;
 
-  @Inject
-  protected UISynchronize uiSync;
+	@Inject @Optional
+	protected Logger logger;
 
-  @Inject @Optional
-  protected Logger logger;
+	protected EventHandler makeHandler(String topic, IRequestor requestor) {
+		return new UIEventHandler(topic, requestor);
+	}
 
-  @Override
-  protected EventHandler makeHandler(String topic, IRequestor requestor) {
-    return new UIEventHandler(topic, requestor);
-  }
-
-  @Override
-  protected String getTopic(IObjectDescriptor descriptor) {
-    if (descriptor == null) {
-      return null;
-    }
-    UIEventTopic qualifier = descriptor.getQualifier(UIEventTopic.class);
-    return RAPEventBroker.rapifyTopic(instanceId, qualifier.value());
-  }
+	protected String getTopic(IObjectDescriptor descriptor) {
+		if (descriptor == null)
+			return null;
+		UIEventTopic qualifier = descriptor.getQualifier(UIEventTopic.class);
+		return RAPEventBroker.rapifyTopic(instanceId, qualifier.value());
+	}
 
 }

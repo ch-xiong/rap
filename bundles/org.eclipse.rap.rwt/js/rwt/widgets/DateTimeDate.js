@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2019 Innoopract Informationssysteme GmbH and others.
+ * Copyright (c) 2008, 2017 Innoopract Informationssysteme GmbH and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -799,13 +799,8 @@ rwt.qx.Class.define( "rwt.widgets.DateTimeDate", {
 
     _onCalendarDateChange : function() {
       if( !this._internalDateChanged ) {
-        var milliseconds = this._calendar.getDate().getTime();
-        var min = this._minimum ? this._minimum.getTime() : Number.MIN_VALUE;
-        var max = this._maximum ? this._maximum.getTime() : Number.MAX_VALUE;
-        if( milliseconds >= min && milliseconds <= max ) {
-          this._setDate( this._calendar.getDate() );
-          this._sendChanges();
-        }
+        this._setDate( this._calendar.getDate() );
+        this._sendChanges();
       }
     },
 

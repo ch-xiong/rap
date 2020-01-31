@@ -165,6 +165,9 @@ class AcceleratorBinding implements Listener {
       case SWT.END:
         result = "END";
         break;
+      case SWT.ESC:
+        result = "ESC";
+        break;
       case SWT.ARROW_UP:
         result = "ARROW_UP";
         break;

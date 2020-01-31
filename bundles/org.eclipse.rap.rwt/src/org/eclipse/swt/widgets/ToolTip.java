@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2019 Rüdiger Herrmann and others.
+ * Copyright (c) 2011, 2013 Rüdiger Herrmann and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -11,9 +11,7 @@
  ******************************************************************************/
 package org.eclipse.swt.widgets;
 
-import static org.eclipse.swt.internal.widgets.MarkupUtil.checkMarkupPrecondition;
 import static org.eclipse.swt.internal.widgets.MarkupUtil.isMarkupEnabledFor;
-import static org.eclipse.swt.internal.widgets.MarkupUtil.MarkupTarget.TEXT;
 import static org.eclipse.swt.internal.widgets.MarkupValidator.isValidationDisabledFor;
 
 import org.eclipse.rap.rwt.RWT;
@@ -97,12 +95,12 @@ public class ToolTip extends Widget {
   public ToolTip( Shell parent, int style ) {
     super( parent, checkStyle( style ) );
     this.parent = parent;
-    autoHide = true;
-    text = "";
-    message = "";
+    this.autoHide = true;
+    this.text = "";
+    this.message = "";
     Point cursorLocation = display.getCursorLocation();
-    x = cursorLocation.x;
-    y = cursorLocation.y;
+    this.x = cursorLocation.x;
+    this.y = cursorLocation.y;
     this.parent.createToolTip( this );
   }
 
@@ -114,7 +112,7 @@ public class ToolTip extends Widget {
         toolTipAdapter = new IToolTipAdapter() {
           @Override
           public Point getLocation() {
-            return new Point( x, y );
+            return new Point( ToolTip.this.x, ToolTip.this.y );
           }
         };
       }
@@ -437,7 +435,6 @@ public class ToolTip extends Widget {
   @Override
   public void setData( String key, Object value ) {
     if( !RWT.MARKUP_ENABLED.equals( key ) || !isMarkupEnabledFor( this ) ) {
-      checkMarkupPrecondition( key, TEXT, () -> text.isEmpty() );
       super.setData( key, value );
     }
   }

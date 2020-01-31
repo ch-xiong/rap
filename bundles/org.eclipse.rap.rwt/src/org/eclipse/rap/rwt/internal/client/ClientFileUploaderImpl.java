@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2014, 2019 EclipseSource and others.
+ * Copyright (c) 2014, 2015 EclipseSource and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -25,7 +25,6 @@ public class ClientFileUploaderImpl implements ClientFileUploader {
 
   private static final String REMOTE_ID = "rwt.client.FileUploader";
   private final RemoteObject remoteObject;
-  private int counter;
 
   public ClientFileUploaderImpl() {
     ConnectionImpl connection = ( ConnectionImpl )RWT.getUISession().getConnection();
@@ -33,29 +32,17 @@ public class ClientFileUploaderImpl implements ClientFileUploader {
   }
 
   @Override
-  public String submit( String url, ClientFile[] clientFiles ) {
+  public void submit( String url, ClientFile[] clientFiles ) {
     notNullOrEmpty( url, "url" );
     notNull( clientFiles, "clientFiles" );
     JsonArray fileIds = new JsonArray();
     for( ClientFile file : clientFiles ) {
       fileIds.add( ( ( ClientFileImpl )file ).getFileId() );
     }
-    String uploadId = "upload_" + counter++;
     if( !fileIds.isEmpty() ) {
-      JsonObject parameters = new JsonObject()
-        .add( "url", url )
-        .add( "fileIds", fileIds )
-        .add( "uploadId", uploadId );
+      JsonObject parameters = new JsonObject() .add( "url", url ) .add( "fileIds", fileIds );
       remoteObject.call( "submit", parameters );
-      return uploadId;
     }
-    return null;
-  }
-
-  @Override
-  public void abort( String uploadId ) {
-    notNullOrEmpty( uploadId, "uploadId" );
-    remoteObject.call( "abort", new JsonObject().add( "uploadId", uploadId ) );
   }
 
 }

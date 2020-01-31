@@ -367,6 +367,8 @@ public class ScrollBar extends Widget {
     return maximum;
   }
 
+  public void setIncrement( int value ) { }
+
   /**
    * Sets the maximum. If this value is negative or less than or
    * equal to the minimum, the value is ignored. If necessary, first
@@ -417,6 +419,8 @@ public class ScrollBar extends Widget {
     checkWidget();
     this.minimum = minimum;
   }
+
+  public void setPageIncrement( int value ) { }
 
   /**
    * Sets the single <em>selection</em> that is the receiver's

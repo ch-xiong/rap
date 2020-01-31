@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  Copyright (C) 2011, 2020 EclipseSource and others.
+  Copyright (C) 2011, 2018 EclipseSource and others.
   All rights reserved. This program and the accompanying materials
   are made available under the terms of the Eclipse Public License v1.0
   which accompanies this distribution, and is available at
@@ -16,7 +16,7 @@
 
   <groupId>org.eclipse.rap</groupId>
   <artifactId>org.eclipse.rap.runtime-parent</artifactId>
-  <version>3.12.0-SNAPSHOT</version>
+  <version>3.7.0-SNAPSHOT</version>
   <packaging>pom</packaging>
 
   <properties>
@@ -29,11 +29,11 @@
     <tycho-baseline-repo.url>http://download.eclipse.org/rt/rap/3.2/</tycho-baseline-repo.url>
      -->
     <cbi-plugins.version>1.1.2</cbi-plugins.version>
-    <jetty-repo.url>https://download.eclipse.org/jetty/updates/jetty-bundles-9.x/9.4.24.v20191120/</jetty-repo.url>
-    <orbit-repo.url>https://download.eclipse.org/tools/orbit/downloads/2020-03/</orbit-repo.url>
-    <platform-repo.url>https://download.eclipse.org/eclipse/updates/4.15milestones/S-4.15M1-202001100905/</platform-repo.url>
-    <rap-extra-repo.url>https://build.eclipse.org/rt/rap/base-platforms/3.12/extra-dependencies/</rap-extra-repo.url>
-    <license-repo.url>https://download.eclipse.org/cbi/updates/license/</license-repo.url>
+    <jetty-repo.url>http://download.eclipse.org/jetty/updates/jetty-bundles-9.x/9.4.14.v20181113/</jetty-repo.url>
+    <orbit-repo.url>http://download.eclipse.org/tools/orbit/downloads/drops/R20181128170323/repository/</orbit-repo.url>
+    <platform-repo.url>http://download.eclipse.org/eclipse/updates/4.10/R-4.10-201812060815/</platform-repo.url>
+    <rap-extra-repo.url>http://build.eclipse.org/rt/rap/base-platforms/3.7/extra-dependencies/</rap-extra-repo.url>
+    <license-repo.url>http://download.eclipse.org/cbi/updates/license/</license-repo.url>
     <!-- The build type, N for nighty builds, S for stable builds. S-builds will be signed. -->
     <buildType>N</buildType>
     <build>${maven.build.timestamp}</build>
@@ -76,33 +76,6 @@
         <extensions>true</extensions>
       </plugin>
 
-      <plugin>
-        <groupId>org.eclipse.tycho</groupId>
-        <artifactId>tycho-packaging-plugin</artifactId>
-        <version>${tycho.version}</version>
-        <dependencies>
-          <dependency>
-            <groupId>org.eclipse.tycho.extras</groupId>
-            <artifactId>tycho-buildtimestamp-jgit</artifactId>
-            <version>${tycho-extras.version}</version>
-          </dependency>
-          <dependency>
-            <groupId>org.eclipse.tycho.extras</groupId>
-            <artifactId>tycho-sourceref-jgit</artifactId>
-            <version>${tycho-extras.version}</version>
-          </dependency>
-        </dependencies>
-        <configuration>
-          <timestampProvider>jgit</timestampProvider>
-          <jgit.ignore>
-            pom.xml
-          </jgit.ignore>
-          <format>yyyyMMdd-HHmm</format>
-          <sourceReferences>
-            <generate>true</generate>
-          </sourceReferences>
-        </configuration>
-      </plugin>
 
       <plugin>
         <groupId>org.eclipse.tycho</groupId>
@@ -163,7 +136,7 @@
         </executions>
       </plugin>
 
-      <!-- ensure Java 1.8 class library compatibility -->
+      <!-- ensure Java 1.7 class library compatibility -->
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>animal-sniffer-maven-plugin</artifactId>
@@ -171,13 +144,13 @@
         <configuration>
           <signature>
             <groupId>org.codehaus.mojo.signature</groupId>
-            <artifactId>java18</artifactId>
+            <artifactId>java17</artifactId>
             <version>1.0</version>
           </signature>
         </configuration>
         <executions>
           <execution>
-            <id>ensure-java-1.8-class-library</id>
+            <id>ensure-java-1.7-class-library</id>
             <phase>test</phase>
             <goals>
               <goal>check</goal>

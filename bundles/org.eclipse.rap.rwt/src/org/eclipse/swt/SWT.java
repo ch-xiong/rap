@@ -530,6 +530,8 @@ public class SWT {
    */
   public static final int Skin = 45;
 
+  public static final int OpenDocument = 46;
+
   /**
    * Indicates that a user-interface component is being dragged,
    * for example dragging the thumb of a scroll bar (value is 1).
@@ -1874,6 +1876,94 @@ public class SWT {
    * @since 3.1
    */
   public static final int MIRRORED = 1 << 27;
+
+  /**
+   * Style constant to indicate single underline (value is 0).
+   * <p><b>Used By:</b><ul>
+   * <li><code>TextStyle</code></li>
+   * </ul></p>
+   *
+   * @since 3.4
+   */
+  public static final int UNDERLINE_SINGLE = 0;
+
+  /**
+   * Style constant to indicate double underline (value is 1).
+   * <p><b>Used By:</b><ul>
+   * <li><code>TextStyle</code></li>
+   * </ul></p>
+   *
+   * @since 3.4
+   */
+  public static final int UNDERLINE_DOUBLE = 1;
+
+  /**
+   * Style constant to indicate error underline (value is 2).
+   * <p><b>Used By:</b><ul>
+   * <li><code>TextStyle</code></li>
+   * </ul></p>
+   *
+   * @since 3.4
+   */
+  public static final int UNDERLINE_ERROR = 2;
+
+  /**
+   * Style constant to indicate squiggle underline (value is 3).
+   * <p><b>Used By:</b><ul>
+   * <li><code>TextStyle</code></li>
+   * </ul></p>
+   *
+   * @since 3.4
+   */
+  public static final int UNDERLINE_SQUIGGLE = 3;
+
+  /**
+   * Style constant to indicate link underline (value is 0).
+   * <p>
+   * If the text color or the underline color are not set in the range
+   * the usage of <code>UNDERLINE_LINK</code> will change these colors
+   * to the preferred link color of the platform.<br>
+   * Note that clients that use this style, such as <code>StyledText</code>,
+   * will include code to track the mouse and change the cursor to the hand
+   * cursor when mouse is over the link.
+   * </p>
+   * <p><b>Used By:</b><ul>
+   * <li><code>TextStyle</code></li>
+   * </ul></p>
+   *
+   * @since 3.5
+   */
+  public static final int UNDERLINE_LINK = 4;
+
+  /**
+   * Style constant to indicate solid border (value is 1).
+   * <p><b>Used By:</b><ul>
+   * <li><code>TextStyle</code></li>
+   * </ul></p>
+   *
+   * @since 3.4
+   */
+  public static final int BORDER_SOLID = 1;
+
+  /**
+   * Style constant to indicate dashed border (value is 2).
+   * <p><b>Used By:</b><ul>
+   * <li><code>TextStyle</code></li>
+   * </ul></p>
+   *
+   * @since 3.4
+   */
+  public static final int BORDER_DASH = 2;
+
+  /**
+   * Style constant to indicate dotted border (value is 4).
+   * <p><b>Used By:</b><ul>
+   * <li><code>TextStyle</code></li>
+   * </ul></p>
+   *
+   * @since 3.4
+   */
+  public static final int BORDER_DOT = 4;
 
   /**
    * Style constant for horizontal scrollbar behavior (value is 1&lt;&lt;8).
@@ -3273,6 +3363,9 @@ public class SWT {
    */
   public static final int ERROR_INVALID_RETURN_VALUE = 51;
 
+  public static final int BITMAP = 0;
+  public static final int ICON = 1;
+
   /**
    * The <code>Image</code> constructor argument indicating that
    * the new image should be a copy of the image provided as
@@ -3575,6 +3668,13 @@ public class SWT {
    * @since 1.4
    */
   public static final int ID_QUIT = -6;
+
+  public static final int LINE_SOLID = 1;
+  public static final int LINE_DASH = 2;
+  public static final int LINE_DOT = 3;
+  public static final int LINE_DASHDOT = 4;
+  public static final int LINE_DASHDOTDOT = 5;
+  public static final int LINE_CUSTOM = 6;
 
   private static final int RWT_VERSION = readVersion();
 

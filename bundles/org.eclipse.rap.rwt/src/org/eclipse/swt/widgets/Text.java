@@ -1160,4 +1160,8 @@ public class Text extends Scrollable {
   private TextThemeAdapter getThemeAdapter() {
     return ( TextThemeAdapter )getAdapter( ThemeAdapter.class );
   }
+
+  public void showSelection() {
+    return;
+  }
 }

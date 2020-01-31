@@ -177,102 +177,102 @@ public class IDialogConstants {
     /**
      * The label for OK buttons.
      */
-    public String OK_LABEL;
+    public static String OK_LABEL = JFaceResources.getString(IDialogLabelKeys.OK_LABEL_KEY);
 
     /**
      * The label for cancel buttons.
      */
-    public String CANCEL_LABEL;
+    public static String CANCEL_LABEL = JFaceResources.getString(IDialogLabelKeys.CANCEL_LABEL_KEY);
 
     /**
      * The label for yes buttons.
      */
-    public String YES_LABEL;
+    public static String YES_LABEL = JFaceResources.getString(IDialogLabelKeys.YES_LABEL_KEY);
 
     /**
      * The label for no buttons.
      */
-    public String NO_LABEL;
+    public static String NO_LABEL = JFaceResources.getString(IDialogLabelKeys.NO_LABEL_KEY);
 
     /**
      * The label for not to all buttons.
      */
-    public String NO_TO_ALL_LABEL;
+    public static String NO_TO_ALL_LABEL = JFaceResources.getString(IDialogLabelKeys.NO_TO_ALL_LABEL_KEY);
 
     /**
      * The label for yes to all buttons.
      */
-    public String YES_TO_ALL_LABEL;
+    public static String YES_TO_ALL_LABEL = JFaceResources.getString(IDialogLabelKeys.YES_TO_ALL_LABEL_KEY);
 
     /**
      * The label for skip buttons.
      */
-    public String SKIP_LABEL;
+    public static String SKIP_LABEL = JFaceResources.getString(IDialogLabelKeys.SKIP_LABEL_KEY);
 
     /**
      * The label for stop buttons.
      */
-    public String STOP_LABEL;
+    public static String STOP_LABEL = JFaceResources.getString(IDialogLabelKeys.STOP_LABEL_KEY);
 
     /**
      * The label for abort buttons.
      */
-    public String ABORT_LABEL;
+    public static String ABORT_LABEL = JFaceResources.getString(IDialogLabelKeys.ABORT_LABEL_KEY);
 
     /**
      * The label for retry buttons.
      */
-    public String RETRY_LABEL;
+    public static String RETRY_LABEL = JFaceResources.getString(IDialogLabelKeys.RETRY_LABEL_KEY);
 
     /**
      * The label for ignore buttons.
      */
-    public String IGNORE_LABEL;
+    public static String IGNORE_LABEL = JFaceResources.getString(IDialogLabelKeys.IGNORE_LABEL_KEY);
 
     /**
      * The label for proceed buttons.
      */
-    public String PROCEED_LABEL;
+    public static String PROCEED_LABEL = JFaceResources.getString(IDialogLabelKeys.PROCEED_LABEL_KEY);
 
     /**
      * The label for open buttons.
      */
-    public String OPEN_LABEL;
+    public static String OPEN_LABEL = JFaceResources.getString(IDialogLabelKeys.OPEN_LABEL_KEY);
 
     /**
      * The label for close buttons.
      */
-    public String CLOSE_LABEL;
+    public static String CLOSE_LABEL = JFaceResources.getString(IDialogLabelKeys.CLOSE_LABEL_KEY);
 
     /**
      * The label for show details buttons.
      */
-    public String SHOW_DETAILS_LABEL;
+    public static String SHOW_DETAILS_LABEL = JFaceResources.getString(IDialogLabelKeys.SHOW_DETAILS_LABEL_KEY);
 
     /**
      * The label for hide details buttons.
      */
-    public String HIDE_DETAILS_LABEL;
+    public static String HIDE_DETAILS_LABEL = JFaceResources.getString(IDialogLabelKeys.HIDE_DETAILS_LABEL_KEY);
 
     /**
      * The label for back buttons.
      */
-    public String BACK_LABEL;
+    public static String BACK_LABEL = JFaceResources.getString(IDialogLabelKeys.BACK_LABEL_KEY);
 
     /**
      * The label for next buttons.
      */
-    public String NEXT_LABEL;
+    public static String NEXT_LABEL = JFaceResources.getString(IDialogLabelKeys.NEXT_LABEL_KEY);
 
     /**
      * The label for finish buttons.
      */
-    public String FINISH_LABEL;
+    public static String FINISH_LABEL = JFaceResources.getString(IDialogLabelKeys.FINISH_LABEL_KEY);
 
     /**
      * The label for help buttons.
      */
-    public String HELP_LABEL;
+    public static String HELP_LABEL = JFaceResources.getString(IDialogLabelKeys.HELP_LABEL_KEY);
 
     // Margins, spacings, and sizes
     /**
@@ -342,7 +342,6 @@ public class IDialogConstants {
      * Minimum width of message area in dialog units (value 300).
      */
     public final static int MINIMUM_MESSAGE_AREA_WIDTH = 300;
-
     /**
      * Returns an implementation of <code>IDialogConstants</code> according
      * to the current locale.
@@ -351,6 +350,7 @@ public class IDialogConstants {
      */
     public static IDialogConstants get() {
       IDialogConstants result = new IDialogConstants(); 
+      /*
       result.OK_LABEL
         = JFaceResources.getString( IDialogLabelKeys.OK_LABEL_KEY );
       result.CANCEL_LABEL
@@ -391,6 +391,7 @@ public class IDialogConstants {
         = JFaceResources.getString( IDialogLabelKeys.FINISH_LABEL_KEY );
       result.HELP_LABEL
         = JFaceResources.getString( IDialogLabelKeys.HELP_LABEL_KEY );
+      */
       return result;
     }
 }

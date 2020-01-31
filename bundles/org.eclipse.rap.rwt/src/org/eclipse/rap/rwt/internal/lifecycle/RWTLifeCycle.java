@@ -293,6 +293,19 @@ public class RWTLifeCycle extends LifeCycle {
           } catch( UIThreadTerminatedError thr ) {
             throw thr;
           } catch( Throwable thr ) {
+
+            // 递归查找UIThreadTerminatedError 异常
+            Throwable cause = thr.getCause();
+            int depth = 0;
+            while(cause != null && ++depth < 10){
+              if(cause instanceof UIThreadTerminatedError){
+                // 处理shutdown
+                ( ( ISessionShutdownAdapter )uiThread ).processShutdown();
+                return;
+              }
+              cause = cause.getCause();
+            };
+
             ServiceStore serviceStore = ContextProvider.getServiceStore();
             serviceStore.setAttribute( UI_THREAD_THROWABLE, thr );
           }

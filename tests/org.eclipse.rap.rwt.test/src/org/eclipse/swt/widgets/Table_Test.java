@@ -2633,9 +2633,8 @@ public class Table_Test {
     item.setText( "<b>foo</b>" );
     int width1 = table.getItemsPreferredWidth( 0 );
 
-    item.dispose();
+    item.clearTextWidths();
     table.setData( RWT.MARKUP_ENABLED, Boolean.TRUE );
-    item = new TableItem( table, SWT.NONE );
     int width2 = table.getItemsPreferredWidth( 0 );
 
     assertTrue( width1 > width2 );
@@ -2811,26 +2810,6 @@ public class Table_Test {
     } catch( IllegalArgumentException notExpected ) {
       fail();
     }
-  }
-
-  @Test
-  public void testSetMarkupEnabled_onDirtyWidget() {
-    new TableItem( table, SWT.NONE );
-
-    try {
-      table.setData( RWT.MARKUP_ENABLED, Boolean.TRUE );
-      fail();
-    } catch( SWTException expected ) {
-      assertTrue( expected.throwable instanceof IllegalStateException );
-    }
-  }
-
-  @Test
-  public void testSetMarkupEnabled_onDirtyWidget_onceEnabledBefore() {
-    table.setData( RWT.MARKUP_ENABLED, Boolean.TRUE );
-    new TableItem( table, SWT.NONE );
-
-    table.setData( RWT.MARKUP_ENABLED, Boolean.TRUE );
   }
 
   @Test
